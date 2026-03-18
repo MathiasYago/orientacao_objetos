@@ -4,15 +4,16 @@ void main() {
     char[] painel = {'_', '_', '_', '_', '_', '_', '_'};
     int numeromaximo = 6;
     int erros = 0;
-    IO.println(" oii vamos jogar o jogo da forca");
+
+    IO.println("oii vamos jogar o jogo da forca (maximo 6 erros)");
 
     while (erros < numeromaximo) {
 
-        String.valueOf("Palavra:" + String.valueOf((painel)));
-        IO.println("a palavra é:" + String.valueOf(painel));
+
+        IO.println("A palavra é: " + String.valueOf(painel));
 
         String letraDigitada = IO.readln("Digite uma letra: ");
-        IO.println("voce digitou: " + letraDigitada);
+        IO.println("Você digitou: " + letraDigitada);
 
         char letra = letraDigitada.charAt(0);
         boolean acertou = false;
@@ -24,10 +25,19 @@ void main() {
             }
         }
 
-        if (String.valueOf(painel).equals(palavraSecreta)) {
-            IO.println("Você acertou!!!! karaio");
-            break;
+        if (!acertou) {
+            IO.println("Letra incorreta!");
+            erros++;
+        } else {
+            IO.println("Você acertou uma letra!");
         }
 
+        if (String.valueOf(painel).equals(palavraSecreta)) {
+            IO.println("A palavra certa é: " + palavraSecreta + ", parabéns!");
+            break;
+        }
+    }if (erros >= numeromaximo){
+        IO.println("game over");
+        IO.println("A palavra certa é: " + palavraSecreta);
     }
 }
